@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Banco de la Nación - Panel de Operaciones</title>
+    <link rel="stylesheet" href="{% static 'banco/css/styles.css' %}">
+    <style>
+        #dashboard-body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://iupana.com/wp-content/uploads/2021/11/hipoteca-digital-bcp-rrss.jpg');
+            backdrop-filter: blur(4px);
+            background-size: cover;
+        }
+
+        .dashboard-container {
+            width: 550px;
+            height: 550px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: 2px solid #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #dashboard-title-container {
+            text-align: center;
+            font-size: 2em;
+            display: flex;
+            flex-direction: column;
+            gap: .7em;
+        }
+
+        #dashboard-operations-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1em;
+            height: 350px;
+        }
+
+        #dashboard-operations {
+            display: grid;
+            height: 300px;
+            grid-template-columns: repeat(2, 200px);
+            grid-template-rows: repeat(2, 200px);
+            justify-content: center;
+            justify-items: center;
+        }
+
+        #dashboard-operations button {
+            width: 140px;
+            height: 80px;
+            padding: 1em;
+            font-size: 1.2em;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: .3s ease;
+        }
+
+        #dashboard-operations button:hover {
+            background-color: #013c7c;
+        }
+
+        .logout {
+            background-color: rgb(248, 75, 75);
+            color: #fff;
+            width: 140px;
+            height: 50px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            transition: .3s ease;
+            cursor: pointer;
+        }
+
+        .logout:hover {
+            background-color: rgb(153, 38, 38);
+        }
+    </style>
+</head>
+
+<body id="dashboard-body">
+    <main class="dashboard-container">
+        <section id="dashboard-title-container">
+            <h1 id="dashboard-title">Bienvenido {{ nombre_completo }}</h1>
+            <p id="dashboard-text">¿Qué operación realizará hoy?</p>
+        </section>
+        <section id="dashboard-operations-container">
+            <div id="dashboard-operations">
+                <!--
+                    Estos botones llaman a las funciones definidas en el archivo scripts.js
+                -->
+                <button onclick="depositar()" class="dashboard-operation">Depositar</button>
+                <button onclick="transferir()" class="dashboard-operation">Transferir</button>
+                <button onclick="retirar()" class="dashboard-operation">Retirar</button>
+                <button onclick="consultar()" class="dashboard-operation">Consultar</button>
+            </div>
+        </section>
+        <button onclick="logout()" class="logout">Cerrar sesión</button>
+    </main>
+
+    {% load static %}
+    <script src="{% static 'banco/js/scripts.js' %}"></script>
+</body>
+
+</html>

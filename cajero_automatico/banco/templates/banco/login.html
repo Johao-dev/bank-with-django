@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Banco de la Nación - Login</title>
+    <link rel="stylesheet" href="{% static 'banco/css/styles.css' %}">
+</head>
+
+<body id="login-body">
+    <main id="login-container">
+        <section class="login-box">
+            <h1 id="login-box-title">BANCO DE LA NACION</h1>
+            <form method="post" id="login-box-form">
+                {% csrf_token %}
+                <input class="login-box-input" type="text" name="dni" id="dni" required placeholder="N° DNI">
+                <input class="login-box-input" type="text" name="numero_tarjeta" required
+                    placeholder="Numero de tarjeta">
+                <input class="login-box-input" type="password" name="clave" required placeholder="Clave de 6 digitos">
+
+                <div class="login-box-options">
+                    <input type="checkbox" name="remember" id="remember">
+                    <label for="remember">Recordarme</label>
+                    <a href="#">¿Olvidó su contraseña?</a>
+                </div>
+                <!--
+                    Este boton hace una peticion al archivo de auth_view.py a la funcion de login_view()
+                -->
+                <button id="login-box-button" type="submit">Ingresar</button>
+                <p id="login-box-register">¿No tiene una cuenta? <a href="#">Registrarse</a></p>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>
